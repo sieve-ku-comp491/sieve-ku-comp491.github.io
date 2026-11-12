@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sieve · AI-assisted triage of static analysis findings</title>
+  <meta name="description" content="Sieve, a COMP 491 senior design project at Koç University: AI-assisted triage of static analysis findings, with a person approving every report.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html">Sieve</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#timeline">Timeline</a>
+      <a href="updates.html">Progress updates</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="tag">COMP 491 Senior Design Project · Koç University · Fall 2026</span>
+    <h1>Sieve: AI-assisted triage of static analysis findings</h1>
+    <p>Static analyzers report hundreds of possible vulnerabilities in a code base, many of them false positives and duplicates. Sieve groups the duplicates, checks each finding with an LLM, scores its severity, and turns the findings a person approves into reports.</p>
+  </div>
+
+  <section id="about">
+    <h2>What Sieve does, and for whom</h2>
+    <p>Sieve is for security researchers who review public source code, such as hunters on open-source bug bounty programs. It runs on the researcher's own machine and only scans repositories they list as allowed. A person approves every finding before anything is exported.</p>
+    <ol class="steps">
+      <li><b>Scan</b><span>Semgrep, Bandit, SpotBugs, ESLint and Gitleaks run as plug-ins, each in its own container, and their SARIF output becomes one finding format.</span></li>
+      <li><b>Group duplicates</b><span>Findings of the same issue, from different tools or repeated scans, are grouped, and a finding that was already reviewed isn't shown again.</span></li>
+      <li><b>AI triage</b><span>An LLM decides whether each finding is a true or false positive, explains why, and cites the code it relies on.</span></li>
+      <li><b>Severity</b><span>The LLM chooses the CVSS v4.0 metrics with a reason for each, and Sieve computes the score with FIRST's algorithm.</span></li>
+      <li><b>Review and report</b><span>The researcher approves, rejects or edits each finding. Only approved findings with approved text are exported as Markdown reports.</span></li>
+    </ol>
+    <p class="muted" style="margin-top:16px">We evaluate it on OWASP PyGoat, WebGoat and Juice Shop, the OWASP Benchmark for Java and Python, and real CVEs.</p>
+  </section>
+
+  <section id="team">
+    <h2>Team</h2>
+    <div class="team">
+      <div class="card"><b>Riad Shahbazov</b><span>Co-lead. Requirements, AI triage and the LLM provider interface.</span></div>
+      <div class="card"><b>Ali Mursaliyev</b><span>Co-lead. Analyzer plug-ins, the finding format, the findings store, labeling the evaluation data and the PoC check.</span></div>
+      <div class="card"><b>Daniyal Asif</b><span>Back end, development environment, the benchmark harness and report generation.</span></div>
+      <div class="card"><b>Furkan Salik</b><span>Review web app, review data model, CI and this website.</span></div>
+    </div>
+    <h2 style="margin-top:28px">Advisor</h2>
+    <div class="team">
+      <div class="card"><b>Assoc. Prof. Aykut Erdem</b><span>Department of Computer Engineering, Koç University</span></div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <h2>Timeline</h2>
+    <table>
+      <thead><tr><th>Week</th><th>Due</th><th>Milestone</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>6 Nov 2026</td><td>Design review: requirements and design documents, repository, CI and this website</td></tr>
+        <tr><td>4</td><td>20 Nov 2026</td><td>Early prototype: findings from a real scan on the review screen</td></tr>
+        <tr><td>6</td><td>4 Dec 2026</td><td>Mid-demo to our advisor: scanning in all three languages, deduplication, the false-positive check, a first report and the review screen on real findings</td></tr>
+        <tr><td>7</td><td>11 Dec 2026</td><td>Minimum viable product, working end to end</td></tr>
+        <tr><td>9</td><td>25 Dec 2026</td><td>Evaluation and demo day</td></tr>
+        <tr><td>11</td><td>8 Jan 2027</td><td>Poster event, with the poster and a demonstration video on this site</td></tr>
+        <tr><td>Finals</td><td>15 Jan 2027</td><td>Final report</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:12px">We post a progress update every two weeks, from week 4 to week 10.</p>
+  </section>
+
+  <section id="updates">
+    <h2>Progress updates</h2>
+    <p><a href="updates.html">Read the progress updates</a></p>
+  </section>
+</main>
+
+<footer class="wrap">
+  Sieve · COMP 491 Senior Design Project, Koç University. Our source code is in a private repository.
+</footer>
+</body>
+</html>
