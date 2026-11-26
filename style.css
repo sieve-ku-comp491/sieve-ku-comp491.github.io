@@ -38,6 +38,8 @@ th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spa
 .post h3 { margin: 0 0 4px; }
 .post .date { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
 .post.upcoming { border-style: dashed; color: var(--muted); }
+.post ul { margin: 0 0 12px; padding-left: 20px; }
+.post li { margin-bottom: 8px; line-height: 1.5; }
 footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 @media (max-width: 600px) { th:nth-child(1), td:nth-child(1) { white-space: nowrap; } }
 .muted { color: var(--muted); }

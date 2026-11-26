@@ -35,9 +35,22 @@
     -->
 
     <article class="post upcoming">
+      <h3>Week 6 update</h3>
+      <div class="date">Coming Fri 4 Dec 2026</div>
+      <p>The next update comes with the mid-demo to our advisor.</p>
+    </article>
+
+    <article class="post">
       <h3>Week 4 update</h3>
-      <div class="date">Coming Fri 20 Nov 2026</div>
-      <p>The first update covers the requirements and design documents, the design review with our advisor, and the early prototype.</p>
+      <div class="date">Tue 24 Nov 2026</div>
+      <p><b>Done:</b> Sieve now scans a repository and shows the real findings on the review screen, which was our early prototype goal for week 4.</p>
+      <ul>
+        <li>Ali added Bandit, ESLint and Gitleaks next to Semgrep, each running in an isolated container, and built the findings store with its API, the scope check and the command-line interface. A scan of PyGoat gives 294 findings from four analyzers in about a minute and a half, and a scan of OWASP Juice Shop gives 1,681 findings in under two and a half minutes. He also wrote the rule-based grouping of duplicate findings and the matching of a repeated scan to the earlier one.</li>
+        <li>Riad finished the LLM provider interface that every AI step in Sieve uses: it works with six model providers, keeps each run within a budget, logs every call with its cost, and passes scanned code to the model only as data. In week 4 he started the false-positive check and wrote the part that finds the function around a finding in Python, Java, JavaScript and TypeScript code, which deduplication also uses to group findings.</li>
+        <li>Daniyal finished the evaluation harness and ran the baseline: the analyzers alone, before any AI check. On the OWASP Benchmark for Java they find 97% of the real vulnerabilities but also flag 53% of the cases that are not real, and on the Python Benchmark they find 53% and flag 15%. Those false alarms are what Sieve's false-positive check has to remove. He also started the report generator.</li>
+        <li>Furkan built the review screen: it lists the 153 Semgrep findings of a real PyGoat scan with filters for status, tool, severity and verdict, opens each finding with its code, and saves approve, reject and edit decisions through the API. A CVSS v4.0 score is always computed from its vector, never typed in.</li>
+      </ul>
+      <p><b>Next:</b> for the mid-demo on Fri 4 Dec, Ali adds the SpotBugs plug-in and scans WebGoat end to end, Riad adds the similarity and AI steps of deduplication and builds the false-positive check, Daniyal builds the report generator with Markdown export, and Furkan shows the review screen on triaged findings with the report preview.</p>
     </article>
   </section>
 </main>
